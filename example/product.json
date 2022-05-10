@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "duc",
+    "address": [
+      "ngọc hà , ba đình"
+    ],
+    "email": "duc@gmail.com",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "minh",
+    "address": [
+      "ngọc hà , ba đình"
+    ],
+    "email": "minh@gmail.com",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "khoi",
+    "address": [
+      "ngọc hà , ba đình"
+    ],
+    "email": "khoi@gmail.com",
+    "active": true
+  }
+]
