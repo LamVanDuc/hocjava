@@ -9,7 +9,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Writer;
@@ -41,6 +40,7 @@ public class ProductDAOimplement implements ProductDAO{
         return products;
     }
 
+
     @Override
     public Product getProductById(int id) throws SQLException, ClassNotFoundException {
         Product product = null;
@@ -56,6 +56,7 @@ public class ProductDAOimplement implements ProductDAO{
         }
         return product;
     }
+
 
     @Override
     public void updateProduct(int id, String proName, String proDesc, float price) throws SQLException, ClassNotFoundException {
@@ -83,6 +84,7 @@ public class ProductDAOimplement implements ProductDAO{
         connection.close();
     }
 
+
     @Override
     public void createProduct(Product product) throws SQLException, ClassNotFoundException {
         Connection connection = SQLServerConnection.getSQLServerConnection();
@@ -106,6 +108,7 @@ public class ProductDAOimplement implements ProductDAO{
         }
     }
 
+
     @Override
     public boolean deleteProduct(int id) throws SQLException, ClassNotFoundException {
         Connection connection = SQLServerConnection.getSQLServerConnection();
@@ -120,17 +123,18 @@ public class ProductDAOimplement implements ProductDAO{
         return check;
     }
 
+
     @Override
     public void WriteToJson(Product product) throws IOException {
         Writer writer = Files.newBufferedWriter(Paths.get("product.json"), StandardCharsets.UTF_8);
         List<Product> products = Arrays.asList(product);
-
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         gson.toJson(products,writer);
         writer.close();
         System.out.println(" Add successful products");
     }
+
 
     @Override
     public void ReadFormJson() throws IOException, ParseException {
@@ -151,7 +155,9 @@ public class ProductDAOimplement implements ProductDAO{
         System.out.printf(" %-20s %-20s %f\n",proName , proDesc , price);
     }
 
+
     public void searchProductFromJson(String search) throws  IOException{
+        boolean check = false;
         List<Product> products;
         FileReader files = new FileReader("product.json");
         products = new Gson().fromJson(files , new TypeToken<List<Product>>(){}.getType());
@@ -159,10 +165,12 @@ public class ProductDAOimplement implements ProductDAO{
         System.out.println("----------------------------------------------------------");
         for (Product product: products){
             if (product.getProName().equals(search)||product.getProDesc().equals(search)){
+                check = true;
                 System.out.printf(" %-20s %-20s %f\n",product.getProName() , product.getProDesc() , product.getPrice());
-            }else {
-                System.out.println("Not fount !");
             }
+        }
+        if (check == false){
+            System.out.println("Not fount !");
         }
 
     }

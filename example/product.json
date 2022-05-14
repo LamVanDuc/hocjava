@@ -1,29 +1,18 @@
 [
   {
     "id": 1,
-    "name": "duc",
-    "address": [
-      "ngọc hà , ba đình"
-    ],
-    "email": "duc@gmail.com",
-    "active": true
-  },
-  {
+    "proName": "iphone",
+    "proDesc": "newiphone",
+    "price": 4564654.5
+  },{
     "id": 2,
-    "name": "minh",
-    "address": [
-      "ngọc hà , ba đình"
-    ],
-    "email": "minh@gmail.com",
-    "active": true
-  },
-  {
+    "proName": "samsung",
+    "proDesc": "new samsung",
+    "price": 65465.5
+  },{
     "id": 3,
-    "name": "khoi",
-    "address": [
-      "ngọc hà , ba đình"
-    ],
-    "email": "khoi@gmail.com",
-    "active": true
+    "proName": "galaxy",
+    "proDesc": "new galaxy",
+    "price": 8975.5
   }
 ]

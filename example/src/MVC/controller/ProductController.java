@@ -39,4 +39,8 @@ public class ProductController {
     public void searchProductFromJson(String search)throws IOException{
         productDAOimplement.searchProductFromJson(search);
     }
+
+    public void UpdateFileJson(){
+        productDAOimplement.updateFromJson();
+    }
 }

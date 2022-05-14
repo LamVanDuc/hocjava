@@ -33,7 +33,7 @@ public class ProductConsole {
         System.out.println("9. Update product(From json file)");
 
         System.out.println("10. Exit");
-        int choice =readInt(0,8);
+        int choice =readInt(0,10);
         return choice;
     }
 
@@ -67,7 +67,7 @@ public class ProductConsole {
                     case 6:readProductFormJson();break;
                     case 7:writeProductFormJson();break;
                     case 8:searchProductFromJson();break;
-                    case 9:break;
+                    case 9:updateFromJson();break;
                     case 10:System.exit(1);
                     default:
                         System.out.println("Invalid menu select !");
@@ -176,5 +176,9 @@ public class ProductConsole {
         String search = sc.next();
 
         productController.searchProductFromJson(search);
+    }
+
+    public void updateFromJson(){
+        productController.UpdateFileJson();
     }
 }
