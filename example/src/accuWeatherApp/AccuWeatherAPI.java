@@ -8,13 +8,13 @@ import java.net.URL;
 
 public class AccuWeatherAPI {
     private String key;
-    private String name;
+    private String cytiName;
     Gson gson = new Gson();
 
 
     public AccuWeatherAPI(String key, String name) {
         this.key = key;
-        this.name = name;
+        this.cytiName = name;
     }
 
     public String getKey() {
@@ -25,12 +25,12 @@ public class AccuWeatherAPI {
         this.key = key;
     }
 
-    public String getName() {
-        return name;
+    public String getCytiName() {
+        return cytiName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCytiName(String cytiName) {
+        this.cytiName = cytiName;
     }
 
 
@@ -57,16 +57,30 @@ public class AccuWeatherAPI {
 
     public String getLink(){
        // String link = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey="+getKey()+"&q="+getName()+"&details=false";
-        String link = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/353412?apikey=tbFOLXfZmAxAexEYOmXhcxnbZBDjQBSh&q=h%C3%A0%20n%E1%BB%99i&language=vi-vn&metric=true";
+        String link = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/353412?apikey="+getKey()+"&q="+ getCytiName()+"&language=vi-vn&metric=true";
         return link;
     }
 
     public static void main(String[] args)throws IOException {
-        String name = "Hanoi";
-        String key ="qy2aSb6zMWhu9qSIFkIKA8Wozcd40c87";
-        AccuWeatherAPI accuWeatherAPI = new AccuWeatherAPI(key , name);
-        System.out.println(accuWeatherAPI.getJsonAPI(accuWeatherAPI.getLink()));
-        System.out.println(accuWeatherAPI.getAccuWeatherData().getHeadline().getText());
-
+        String cityName = "Hanoi";
+        String key ="mYVFIGE0wNVGG2CllOFAZVJFtFD3oCTm";
+        AccuWeatherAPI accuWeatherAPI = new AccuWeatherAPI(key , cityName);
+        System.out.println(accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getDate()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getDay().getIcon()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getDay().getIconPhrase()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getDay().getPrecipitationIntensity()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getDay().getPrecipitationType()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getNight().getIconPhrase()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getNight().getIcon()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getNight().getPrecipitationIntensity()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getNight().getPrecipitationType()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getEpochDate()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getTemperature().getMaximum().getUnit()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getTemperature().getMaximum().getUnitType()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getTemperature().getMaximum().getValue()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getTemperature().getMinimum().getUnit()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getTemperature().getMinimum().getValue()+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getSources().get(0)+"\n"+
+                accuWeatherAPI.getAccuWeatherData().getDailyForecasts().get(0).getTemperature().getMinimum().getUnitType());
     }
 }

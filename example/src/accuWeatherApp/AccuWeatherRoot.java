@@ -1,17 +1,29 @@
 package accuWeatherApp;
 
+import java.util.List;
+
 public class AccuWeatherRoot {
-    private Headline headline;
+    private Headline Headline;
+    private List<DailyForecasts> DailyForecasts;
 
-    public AccuWeatherRoot(Headline headline) {
-        this.headline = headline;
+    public AccuWeatherRoot(accuWeatherApp.Headline headline, List<accuWeatherApp.DailyForecasts> dailyForecasts) {
+        Headline = headline;
+        DailyForecasts = dailyForecasts;
     }
 
-    public Headline getHeadline() {
-        return headline;
+    public accuWeatherApp.Headline getHeadline() {
+        return Headline;
     }
 
-    public void setHeadline(Headline headline) {
-        this.headline = headline;
+    public void setHeadline(accuWeatherApp.Headline headline) {
+        Headline = headline;
+    }
+
+    public List<accuWeatherApp.DailyForecasts> getDailyForecasts() {
+        return DailyForecasts;
+    }
+
+    public void setDailyForecasts(List<accuWeatherApp.DailyForecasts> dailyForecasts) {
+        DailyForecasts = dailyForecasts;
     }
 }
